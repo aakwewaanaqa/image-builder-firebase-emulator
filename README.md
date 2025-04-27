@@ -38,19 +38,8 @@ docker volume create firestore-config
 docker volume create firestore-data
 
 docker run --rm -it \
-    -p 4000:4000 -p 1337:1337
+    --name=firebase \
+    -p 4000:4000 -p 1337:1337 \
     -v firestore-config:/root/.config \
-    firestore-emulator \
-    firebase login --no-localhost
-```
-
-Then run this to start the emulator.
-```sh
-
-docker run -it --rm \
-  -p 1337:1337 \
-  -p 4000:4000 \
-  -v firestore-config:/root/.config \
-  -v firestore-data:/workspace/firebase/data \
-  firestore-emulator
+    firestore-emulator
 ```

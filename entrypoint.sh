@@ -27,14 +27,7 @@ if [ ! -f firebase.json ]; then
   }
 }
 EOF
-
-    # 自动登录 (需通过 volume 挂载已认证的 HOME 目录)
-    if [ -f /root/.config/configstore/firebase-tools.json ]; then
-        echo "Using existing Firebase credentials"
-    else
-        echo "⚠️ 请先通过交互式终端登录：docker exec -it [容器ID] firebase login --no-localhost"
-    fi
 fi
 
-# 启动模拟器
+firebase login --no-localhost
 firebase emulators:start --project=default --import=data --export-on-exit=data
