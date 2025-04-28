@@ -22,6 +22,12 @@ docker build \
     -t firestore-emulator .
 ```
 
+```ps1
+docker build `
+    --build-arg JDK_ARCH=linux-x64 `
+    -t firestore-emulator .
+```
+
 For arm64 use this one.
 ```sh
 
@@ -41,5 +47,16 @@ docker run --rm -it \
     --name=firebase \
     -p 4000:4000 -p 1337:1337 \
     -v firestore-config:/root/.config \
+    firestore-emulator
+```
+
+```ps1
+docker volume create firestore-config
+docker volume create firestore-data
+
+docker run --rm -it `
+    --name=firebase `
+    -p 4000:4000 -p 1337:1337 `
+    -v firestore-config:/root/.config `
     firestore-emulator
 ```
