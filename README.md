@@ -2,18 +2,35 @@
 
 ## Step 1
 
+Check what your computer's architecture is.
+
+```sh
+
+arch
+```
+
+If it says x86_64 it's an amd computer. <br>
+If it says arm64 it's an arm computer. <br>
+
+## Step 2
+
 For amd / x86_64 use this one.
 ```sh
 
-docker buildx build \
-  --platform linux/amd64,linux/arm64 \
-  --build-arg JDK_ARCH=linux-x64 \
-  --build-arg JDK_ARCH=linux-aarch64 \
-  -t firestore-emulator:latest \
-  .
+docker build \
+    --build-arg JDK_ARCH=linux-x64 \
+    -t firestore-emulator .
 ```
 
-## Step 2
+For arm64 use this one.
+```sh
+
+docker build \
+    --build-arg JDK_ARCH=linux-aarch64 \
+    -t firestore-emulator .
+```
+
+## Step 3
 
 Run this first to login and store config in the volume.
 ```sh

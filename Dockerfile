@@ -37,7 +37,7 @@ WORKDIR /workspace
 EXPOSE 1337 4000
 
 # 初始化脚本
-COPY ./entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
