@@ -34,12 +34,10 @@ docker build \
 
 Run this first to login and store config in the volume.
 ```sh
-docker volume create firestore-config
-docker volume create firestore-data
-
 docker run --rm -it \
     --name=firebase \
     -p 4000:4000 -p 1337:1337 \
     -v firestore-config:/root/.config \
+    -v firestore-data:/workspace/data
     firestore-emulator
 ```

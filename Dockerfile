@@ -10,13 +10,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # 动态选择 JDK 架构 (构建时通过 --build-arg 指定)
-ARG TARGETPLATFORM
-ARG JDK_ARCH
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then  \
-    export JDK_ARCH=linux-x64;  \
-    else export JDK_ARCH=linux-aarch64;  \
-    fi
-
+ARG JDK_ARCH=linux-x64
 RUN curl -L -o jdk.tar.gz \
     "https://download.oracle.com/java/24/latest/jdk-24_${JDK_ARCH}_bin.tar.gz" && \
     tar -xf jdk.tar.gz && \
@@ -37,7 +31,7 @@ WORKDIR /workspace
 EXPOSE 1337 4000
 
 # 初始化脚本
-COPY entrypoint.sh /entrypoint.sh
+COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
