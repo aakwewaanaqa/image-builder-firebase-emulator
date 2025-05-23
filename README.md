@@ -19,7 +19,7 @@ For amd / x86_64 use this one.
 
 docker build \
     --build-arg JDK_ARCH=linux-x64 \
-    -t firestore-emulator .
+    -t firestore-emulator/amd .
 ```
 
 For arm64 use this one.
@@ -27,7 +27,7 @@ For arm64 use this one.
 
 docker build \
     --build-arg JDK_ARCH=linux-aarch64 \
-    -t firestore-emulator .
+    -t firestore-emulator/arm .
 ```
 
 ## Step 3
