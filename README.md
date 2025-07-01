@@ -3,7 +3,6 @@
 ## Step 1
 
 Check what your computer's architecture is.
-
 ```sh
 
 arch
@@ -33,11 +32,23 @@ docker build \
 ## Step 3
 
 Run this first to login and store config in the volume.
+For amd / x86_64 use this one.
 ```sh
 docker run --rm -it \
     --name=firebase \
     -p 4000:4000 -p 1337:1337 \
     -v firestore-config:/root/.config \
     -v firestore-data:/workspace/firebase \
-    firestore-emulator
+    firestore-emulator/amd
+```
+
+Run this first to login and store config in the volume.
+For arm64 use this one.
+```sh
+docker run --rm -it \
+    --name=firebase \
+    -p 4000:4000 -p 1337:1337 \
+    -v firestore-config:/root/.config \
+    -v firestore-data:/workspace/firebase \
+    firestore-emulator/arm
 ```
